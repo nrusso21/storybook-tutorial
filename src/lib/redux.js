@@ -22,6 +22,17 @@ function taskStateReducer(taskState) {
     };
 }
 
+export const reducer = (state, action) => {
+    switch (action.type) {
+        case actions.ARCHIVE_TASK:
+            return taskStateReducer('TASK_ARCHIVED')(state, action);
+        case actions.PIN_TASK:
+            return taskStateReducer('TASK_PINNED')(state, action);
+        default:
+            return state;
+    }
+};
+
 const defaultTasks = [
     { id: '1', title: 'Something', state: 'TASK_INBOX'},
     { id: '2', title: 'Something more', state: 'TASK_INBOX'},
